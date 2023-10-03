@@ -1,0 +1,22 @@
+
+<html>
+
+<body>
+<h1>User List</h1>
+<div class="flash-notice"><%= flash[:notice] %></div>
+<div class="container">
+
+<% @users.each do |user| %>
+  <div class="user">
+  <div class="user-name">UserName: <%= user.user_name %></div>
+  <div class="email">Email: <%= user.email %></div>
+  <div class="type">Role: <%= user.type %></div>
+  <div class="actions">
+  <%= link_to 'Show',user_path(user)%><br>
+  </div>
+  </div>
+  <% end %>
+  </div>
+  </body>
+  
+  </html>

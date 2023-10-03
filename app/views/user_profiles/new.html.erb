@@ -1,0 +1,22 @@
+<h2>Post new Job</h2>
+
+<%= form_tag :action => 'create' do %>
+  <p><label for = "f_name">First Name</label>:
+  <%= text_field 'user_profile', 'f_name' %></p>
+  
+  <p><label for = "l_name">Last Name</label>:
+  <%= text_field 'user_profile', 'l_name' %></p>
+  
+  <p><label for = "education">Education</label>:
+  <%= text_field 'user_profile', 'education' %></p>
+  
+  <p><label for = "experience">Experience</label>:
+  <%= text_field 'user_profile', 'experience' %></p>
+  
+  <p><label for = "skills">Skills</label>:
+  <%= text_field 'user_profile', 'skills' %></p>
+  
+  <%= submit_tag "Create" %>
+<% end %>
+  
+  <%= link_to 'Back', root_path %>

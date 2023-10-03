@@ -1,0 +1,28 @@
+
+<html>
+  <head>
+    <style>
+      .container 
+      {
+        max-width: 300px;
+        margin: 1 auto;
+        padding: 20px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+    <body>
+      <div class="container">
+        <p><strong>First Name : </strong><%= @user_profile.f_name%></p>
+        <p><strong>Last Name : </strong><%= @user_profile.l_name %></p>
+        <p><strong>Education : </strong><%= @user_profile.education %></p>
+        <p><strong>Experience : </strong><%= @user_profile.experience %></p>
+        <p><strong>Skills : </strong><%= @user_profile.skills %></p>
+      </div>
+      <%=link_to 'Update',  edit_user_profiles_path(@user_profile)%>
+      <%= link_to 'Delete', user_profiles_path(@job),data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>
+      <%= link_to 'Back', root_path %>
+    </body>
+  </head>
+</html>

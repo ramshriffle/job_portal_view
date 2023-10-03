@@ -1,0 +1,25 @@
+<h1>edit Job</h1>
+<%= form_with model: @job do |form| %>
+  <div>
+    <%= form.label :job_title %><br>
+    <%= form.text_field :job_title %>
+  </div>
+
+  <div>
+    <%= form.label :description %><br>
+    <%= form.text_field :description %>
+  </div>
+  
+  <div>
+  <%= form.label :location %><br>
+  <%= form.text_field :location %>
+  </div>
+  <div>
+  <%= form.label :salary %><br>
+  <%= form.text_field:salary %>
+</div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

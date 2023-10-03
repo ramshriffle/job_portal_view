@@ -1,0 +1,27 @@
+
+<html>
+  <head>
+    <style>
+      .container 
+      {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+    <body>
+      <div class="container">
+        <p><strong>Title : </strong><%= @job.job_title%></p>
+        <p><strong>Description : </strong><%= @job.description %></p>
+        <p><strong>Location : </strong><%= @job.location %></p>
+        <p><strong>Salary : </strong><%= @job.salary %></p>
+      </div>
+      <%=link_to 'Update',  edit_job_path(@job)%>
+      <%= link_to 'Delete', job_path(@job),data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>
+      <%= link_to 'Back', {:action => 'index'} %>
+    </body>
+  </head>
+</html>

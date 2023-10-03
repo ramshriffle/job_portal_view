@@ -1,0 +1,23 @@
+<h2>Post new Job</h2>
+
+<%= form_tag :action => 'create' do %>
+<p><label for = "job_title">Job</label>:
+<%= text_field 'job', 'job_title' %></p>
+
+<p><label for = "description">Description</label>:
+<%= text_field 'job', 'description' %></p>
+
+<p><label for = "salary">Salary</label>:
+<%= text_field 'job', 'salary' %></p>
+
+<p><label for = "location">Location</label>:
+<%= text_field 'job', 'location' %></p>
+
+
+
+
+<%= submit_tag "Create" %>
+
+<% end %>
+
+<%= link_to 'Back', {:action => 'index'} %>
