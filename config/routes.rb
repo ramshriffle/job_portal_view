@@ -4,9 +4,9 @@ Rails.application.routes.draw do
     get '/users/sign_out', to: 'devise/sessions#destroy'
   end
   
-  resources :users do
-    resources :jobs
-  end
+  # resources :users do
+  #   resources :jobs
+  # end
   resources :jobs
 
   resources :users do
@@ -14,18 +14,20 @@ Rails.application.routes.draw do
   end
   resource :user_profiles
   
-  resources :users do
-    resource :users_application
+  resources :jobs do
+    resources :user_applications
   end
-  resources :users_application
+  resources :user_applications
 
   resources :job_seekers, only: [:index] do
     get 'view_all_jobs', on: :collection
   end
     
+  resources :jobs do
+    resources :job_recruiters
+  end
   resources :job_recruiters do
     member do
-      get 'view_list_of_job_application'
       put 'accept_or_reject_job_application'
       get 'view_accepted_job_application'
       get 'view_rejected_job_application'

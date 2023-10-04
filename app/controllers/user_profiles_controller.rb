@@ -5,6 +5,10 @@ class UserProfilesController < ApplicationController
   def show
     @user_profile
   end
+
+  def new
+
+  end
   
   def create
     @profile = @current_user.build_user_profile(user_profile_param)
@@ -15,7 +19,7 @@ class UserProfilesController < ApplicationController
     end 
   end
 
-  def new
+  def edit
   end
   
   def update
@@ -50,7 +54,7 @@ class UserProfilesController < ApplicationController
   def set_param
     @user_profile=@current_user.user_profile
     if @user_profile.nil?
-      redirect_to new_user_profiles_url
+      redirect_to new_user_profiles_path
     end
   end
 end

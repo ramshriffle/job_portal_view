@@ -5,5 +5,5 @@ class UserApplication < ApplicationRecord
 
   enum status: {applied: "applied", accept: "accept", reject: "reject"} ,_prefix: :status
   validates :job_id,uniqueness: {scope: :user_id, message: "You have already apply for the job"}
-  validates :resume, presence: true
+  # validates :resume, presence: true
 end

@@ -1,15 +1,16 @@
 class JobRecruitersController < ApplicationController
   before_action :check_job_recruiter
   before_action :set_param, only: [:accept_or_reject_job_application]
-  before_action :find_all_job_application, only: [:view_list_of_job_application, :view_accepted_job_application, :view_rejected_job_application]
+  before_action :job_set, only: [:index]
   
   #JobRecriuter(current_user) can view all applied job application
   #on his particular job
-  def view_list_of_job_application
-    if @applied_applications.empty?
+  def index
+    # debugger
+    if @job.user_applications.empty?
       render json: "Nobody apply for job"
     else
-      render json: @applied_applications
+      render json:@job.user_applications
     end
   end
   
@@ -52,12 +53,9 @@ class JobRecruitersController < ApplicationController
   end
   
   private
-  def find_all_job_application
-    begin
-      job = @current_user.jobs.find_by_id(params[:id])
-      @applied_applications = job.user_applications
-    rescue
-      render json: "Job Not Found"
-    end
+  def job_set
+    debugger
+      @job = Job.find_by_id(params[:job_id])
+  
   end
 end

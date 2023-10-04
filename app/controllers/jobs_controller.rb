@@ -1,6 +1,6 @@
 class JobsController < ApplicationController
-  # before_action :check_job_recruiterss
-  before_action :set_param, only: [:show, :update, :destroy, :edit]
+  # before_action :check_job_recruiterss, except: [:index]
+  before_action :set_param, only: [:show,:update, :destroy, :edit]
   
   def index
     if @current_user.type == "JobRecruiter"
@@ -53,7 +53,7 @@ class JobsController < ApplicationController
   
   private
   def set_param
-    @job= @current_user.jobs.find_by_id(params[:id])
+    @job= Job.find_by_id(params[:id])
     unless @job
       render json: "Job not Found"
     end

@@ -1,27 +1,25 @@
 
 <html>
+  <body>
+    <% if @current_user.type=="JobRecruiter" %>
+      <%= link_to "Create New Job", new_job_path %> &nbsp;
+    <% end %>
+      <%= link_to "Profile", user_profiles_path %>
+      <h2>Job List</h2>
+      <div class="container">
 
-<body>
-<%= link_to "Create New Job", new_job_path %>
-<%= link_to "Profile", user_profiles_path %>
-
-<h2>Job List</h2>
-<div class="flash-notice"><%= flash[:notice] %></div>
-<div class="container">
-
-<% @jobs.each do |job| %>
-  <div class="job">
-  <div class="job-name">JobTitle: <%= job.job_title %></div>
-  <div class="job-location">Location: <%= job.location %></div>
-  <div class="actions">
-  <%= link_to 'show', job_path(job)%>
-  <%= link_to "Apply", new_users_application_path %><br><br>
-  </div>
-  </div>
-  <% end %>
-
-  </div>
-  </body>
-  
-  </html>
+      <% @jobs.each do |job| %>
+        <div class="job">
+          <div> JobTitle: <%= job.job_title %></div>
+          <div> Location: <%= job.location %></div>
+          <div class="actions">
+            <%= link_to 'show', job_path(job)%><br><br>           
+          </div>
+          
+        </div>
+       <% end %>
+       
+    </div>
+  </body> 
+</html>
   

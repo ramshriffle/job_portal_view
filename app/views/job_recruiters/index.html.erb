@@ -1,0 +1,16 @@
+<html>
+  <body>
+      <h2>All job application</h2>
+      <div class="container">
+
+      <% @applied_applications.each do |application| %>
+        <div class="job">
+          <div> Status: <%= application.status %></div>
+          <div> User: <%= application.user_id %></div>
+          </div>
+        </div>
+       <% end %>
+       
+    </div>
+  </body> 
+</html>
