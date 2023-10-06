@@ -3,22 +3,22 @@
   <body>
     <% if @current_user.type=="JobRecruiter" %>
       <%= link_to "Create New Job", new_job_path %> &nbsp;
+    <% else %>
+      <%= link_to "View Applied Applications", user_applications_path %> &nbsp;
     <% end %>
+
       <%= link_to "Profile", user_profiles_path %>
       <h2>Job List</h2>
-      <div class="container">
-
+    <div class="container">
       <% @jobs.each do |job| %>
         <div class="job">
-          <div> JobTitle: <%= job.job_title %></div>
-          <div> Location: <%= job.location %></div>
+          <div> Job : <%= job.job_title %></div>
+          <div> Location : <%= job.location %></div>
           <div class="actions">
-            <%= link_to 'show', job_path(job)%><br><br>           
-          </div>
-          
+            <%= link_to 'view details', job_path(job)%><br><br>           
+          </div>  
         </div>
-       <% end %>
-       
+      <% end %>  
     </div>
   </body> 
 </html>

@@ -1,0 +1,21 @@
+<html>
+  <body>
+    <h2>Job List</h2>
+    <div class="container">
+      <% @applications.each do |application| %>
+        <div class="job">
+          <div> Job Title : <%= application.job.job_title %></div>
+          <div> Description : <%= application.job.description %></div>
+          <div> Location : <%= application.job.location %></div>
+          <div> Salary : <%= application.job.salary %></div>
+          <div> Status : <%= application.status %></div>
+          <div class="actions">
+          <%= link_to'Remove application', user_application_path(application)%> &nbsp
+          <%= link_to'Back', root_path%><br><br>
+
+          </div>
+          </div>
+      <% end %>  
+    </div>
+  </body> 
+</html>

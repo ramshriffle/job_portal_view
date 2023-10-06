@@ -33,7 +33,6 @@ class JobsController < ApplicationController
   def update 
     if @job.update(job_param)
       redirect_to job_path(@job)
-    else
       render json: @job.errors.full_messages
     end 
   end
@@ -48,6 +47,7 @@ class JobsController < ApplicationController
   
   private
   def job_param
+    # debugger
     params.require(:job).permit(:job_title, :description, :location, :salary)
   end
   

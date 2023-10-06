@@ -1,16 +1,29 @@
 <html>
-  <body>
-      <h2>All job application</h2>
-      <div class="container">
+  <style>
+    .container 
+    {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+  <%= link_to 'filter', 
+  <%= link_to 'Back',job_path(@job) %>
 
-      <% @applied_applications.each do |application| %>
-        <div class="job">
-          <div> Status: <%= application.status %></div>
-          <div> User: <%= application.user_id %></div>
-          </div>
-        </div>
-       <% end %>
-       
-    </div>
+  <body>
+    <div class="container">
+      <h2>All job application</h2>
+        <% @applications.each do |application| %>
+          <p><strong>Name : </strong><%= application.user.user_profile.f_name%></p>
+          <p><strong>Education : </strong><%= application.user.user_profile.education %></p>
+          <p><strong>Experience : </strong><%= application.user.user_profile.experience %></p>
+          <p><strong>Skills : </strong><%= application.user.user_profile.skills %></p>
+          <p><strong>Status : </strong><%= application.status %></p>
+          <%= link_to 'accept/reject',edit_user_application_path(application) %><br><br>
+        <% end %>
+    </div>      
   </body> 
 </html>

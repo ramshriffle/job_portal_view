@@ -1,0 +1,11 @@
+<h1>Accept or reject job Application</h1>
+<%= form_with model: @job_application do |form| %>
+  <div>
+    <%= form.label :status %><br>
+    <%= form.text_field :status %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

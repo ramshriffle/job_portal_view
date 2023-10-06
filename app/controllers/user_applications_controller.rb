@@ -1,16 +1,20 @@
 class UserApplicationsController < ApplicationController
   # before_action :check_job_seeker
-  before_action :set_param, only: [:destroy]
+  before_action :set_param, only: [:show, :destroy, :edit, :update]
 
   # JobSeeker(current_user) can view his all applied job application
   def index
-    seeker_all_applications=@current_user.user_applications.page(params[:page]).per(2)
-    render json: seeker_all_applications
+    @applications=@current_user.user_applications#.page(params[:page]).per(2)
+    # render json: seeker_all_applications
   end 
   
   def new
     @user_applications=UserApplication.new
     @job = Job.find_by_id(params[:job_id])
+  end
+
+  def show
+    @job_application
   end
   
   def create
@@ -24,12 +28,26 @@ class UserApplicationsController < ApplicationController
 
   def edit
   end
+
+  def update
+    debugger
+    if @current_user == @job_application.job.user
+      if @job_application.update(user_application_param)
+        redirect_to root_path
+      else
+        render json: @job_application.errors.full_messages
+      end
+    else
+      render json: "You have not permission to accept or reject this job application"
+    end
+  end
+
   
   def destroy
-    if @user_application.destroy
-      render json: {message: "Application withdraw successfully"}
+    if @job_application.destroy
+      redirect_to user_applications_path
     else
-      render json: @user_application.errors.full_messages
+      render json: @job_application.errors.full_messages
     end
   end
   
@@ -40,9 +58,7 @@ class UserApplicationsController < ApplicationController
   
   private
   def set_param
-    @user_application = @current_user.user_applications.find_by_id(params[:id])
-    unless @user_application
-      render json: "Seeker not applied"
-    end
+    @job_application = UserApplication.find_by_id(params[:id])
+    # debugger
   end
 end

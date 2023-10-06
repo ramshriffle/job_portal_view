@@ -21,7 +21,7 @@
         <p><strong>Skills : </strong><%= @user_profile.skills %></p>
       </div>
       <%=link_to 'Update',  edit_user_profiles_path(@user_profile)%>
-      <%= link_to 'Delete', user_profiles_path(@job),data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>
+      <%= link_to 'Delete', user_profiles_path(@user_profile),data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>
       <%= link_to 'Back', root_path %>
     </body>
   </head>

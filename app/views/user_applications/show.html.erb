@@ -1,0 +1,24 @@
+
+<html>
+  <head>
+    <style>
+      .container 
+      {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+    <body>
+      <div class="container">
+        <p><strong>Title : </strong><%= @job_application.job.job_title%></p>
+        <p><strong>Location : </strong><%= @job_application.job.location %></p>
+      </div>
+        <%= link_to 'Delete', user_application_path(@job_application),data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %> &nbsp;
+      <%= link_to 'Back', user_applications_path %>
+    </body>
+  </head>
+</html>

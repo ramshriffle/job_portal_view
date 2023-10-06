@@ -16,10 +16,11 @@
   </div>
   <div>
   <%= form.label :salary %><br>
-  <%= form.text_field:salary %>
+  <%= form.text_field:salary %><br><br>
 </div>
 
   <div>
     <%= form.submit %>
   </div>
 <% end %>
+<%= link_to 'Back', job_path(@job) %>
